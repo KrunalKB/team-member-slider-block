@@ -18,6 +18,8 @@ import {
 	SelectControl,
 	Icon,
 	Tooltip,
+	Button,
+	TextControl,
 } from "@wordpress/components";
 import { useEffect, useState, useRef } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
@@ -25,7 +27,10 @@ import { usePrevious } from "@wordpress/compose";
 
 export default function Edit({ attributes, setAttributes, isSelected }) {
 	const { name, bio, imgID, imgALT, imgURL, socialLinks } = attributes;
+
 	const [blobURL, setBlobURL] = useState();
+
+	const [selectedLink, setSelectedLink] = useState();
 
 	const imageObject = useSelect(
 		(select) => {
@@ -96,7 +101,32 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 		});
 	};
 
+	const addNewSocialItem = () => {
+		setAttributes({
+			socialLinks: [...socialLinks, { icon: "wordpress", link: "" }],
+		});
+		setSelectedLink(socialLinks.length);
+	};
+
+	const updateSocialItem = (type, value) => {
+		const socialLinksCopy = [...socialLinks];
+		socialLinksCopy[selectedLink][type] = value;
+		setAttributes({ socialLinks: socialLinksCopy });
+	};
+
+	const removeSocialItem = () => {
+		setAttributes({
+			socialLinks: [
+				...socialLinks.slice(0, selectedLink),
+				...socialLinks.slice(selectedLink + 1),
+			],
+		});
+		setSelectedLink();
+	};
+
 	const prevURL = usePrevious(imgURL);
+
+	const prevIsSelected = usePrevious(isSelected);
 
 	const titleRef = useRef();
 
@@ -123,6 +153,12 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 			titleRef.current.focus();
 		}
 	}, [imgURL, prevURL]);
+
+	useEffect(() => {
+		if (prevIsSelected && !isSelected) {
+			setSelectedLink();
+		}
+	}, [isSelected, prevIsSelected]);
 
 	return (
 		<>
@@ -206,15 +242,26 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 					<ul>
 						{socialLinks.map((item, index) => {
 							return (
-								<li key={index}>
-									<Icon icon={item.icon} />
+								<li
+									key={index}
+									className={selectedLink === index ? "is-selected" : null}
+								>
+									<button
+										aria-label={__("Edit Social Link", "team-members")}
+										onClick={() => setSelectedLink(index)}
+									>
+										<Icon icon={item.icon} />
+									</button>
 								</li>
 							);
 						})}
 						{isSelected && (
 							<li className="wp-block-create-block-team-member-add-icon-li">
 								<Tooltip text={__("Add Social Link", "team-members")}>
-									<button aria-label={__("Add Social Link", "team-members")}>
+									<button
+										aria-label={__("Add Social Link", "team-members")}
+										onClick={addNewSocialItem}
+									>
 										<Icon icon="plus" />
 									</button>
 								</Tooltip>
@@ -222,6 +269,24 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 						)}
 					</ul>
 				</div>
+				{selectedLink !== undefined && (
+					<div className="wp-block-create-block-team-member-link-form">
+						<TextControl
+							label={__("Icon", "team-members")}
+							value={socialLinks[selectedLink].icon}
+							onChange={(icon) => updateSocialItem("icon", icon)}
+						/>
+						<TextControl
+							label={__("URL", "team-members")}
+							value={socialLinks[selectedLink].link}
+							onChange={(link) => updateSocialItem("link", link)}
+						/>
+						<br />
+						<Button isDestructive onClick={removeSocialItem}>
+							{__("Remove Item", "team-members")}
+						</Button>
+					</div>
+				)}
 			</div>
 		</>
 	);

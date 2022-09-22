@@ -1,7 +1,8 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { Icon } from "@wordpress/components";
 
 export default function save({ attributes }) {
-	const { name, bio, imgURL, imgALT, imgID } = attributes;
+	const { name, bio, imgURL, imgALT, imgID, socialLinks } = attributes;
 	return (
 		<div {...useBlockProps.save()}>
 			{imgURL && (
@@ -11,8 +12,23 @@ export default function save({ attributes }) {
 					className={imgID ? `wp-image-${imgID}` : null}
 				/>
 			)}
-			<RichText.Content tagName="h4" value={name} />
-			<RichText.Content tagName="p" value={bio} />
+			{name && <RichText.Content tagName="h4" value={name} />}
+			{bio && <RichText.Content tagName="p" value={bio} />}
+			{socialLinks.length > 0 && (
+				<div className="wp-block-create-block-team-member-social-links">
+					<ul>
+						{socialLinks.map((item, index) => {
+							return (
+								<li key={index} data-icon={item.icon}>
+									<a href={item.link}>
+										<Icon icon={item.icon} />
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			)}
 		</div>
 	);
 }

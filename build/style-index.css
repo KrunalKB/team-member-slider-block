@@ -6,22 +6,22 @@
   flex-wrap: wrap;
 }
 .wp-block-create-block-team-member-slider-block.has-1-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 1) !important;
+  width: calc(100% / 1) !important;
 }
 .wp-block-create-block-team-member-slider-block.has-2-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 2) !important;
+  width: calc(100% / 2) !important;
 }
 .wp-block-create-block-team-member-slider-block.has-3-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 3) !important;
+  width: calc(100% / 3) !important;
 }
 .wp-block-create-block-team-member-slider-block.has-4-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 4) !important;
+  width: calc(100% / 4) !important;
 }
 .wp-block-create-block-team-member-slider-block.has-5-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 5) !important;
+  width: calc(100% / 5) !important;
 }
 .wp-block-create-block-team-member-slider-block.has-6-columns .wp-block-create-block-team-member {
-  width: calc(100%/ 6) !important;
+  width: calc(100% / 6) !important;
 }
 .wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member {
   padding: 10px;
@@ -41,6 +41,21 @@
   font-weight: 300;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+.wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member .wp-block-create-block-team-member-social-links ul {
+  list-style: none;
+  padding: 0px !important;
+  margin: 20px -5px 0;
+}
+.wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member .wp-block-create-block-team-member-social-links ul li {
+  display: inline-block;
+  margin: 5px;
+}
+.wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member .wp-block-create-block-team-member-social-links ul li a {
+  text-decoration: none;
+}
+.wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member .wp-block-create-block-team-member-social-links ul li span.dashicon {
+  color: #4e4e4e;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
