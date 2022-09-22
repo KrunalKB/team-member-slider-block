@@ -5,11 +5,11 @@
   display: block;
 }
 .wp-block-create-block-team-member-slider-block.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 1 - 20px);
+  width: calc(100% / 1 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 1 - 20px);
+  width: calc(100% / 1 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -18,11 +18,11 @@
   position: relative;
 }
 .wp-block-create-block-team-member-slider-block.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 2 - 20px);
+  width: calc(100% / 2 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 2 - 20px);
+  width: calc(100% / 2 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -31,11 +31,11 @@
   position: relative;
 }
 .wp-block-create-block-team-member-slider-block.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 3 - 20px);
+  width: calc(100% / 3 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 3 - 20px);
+  width: calc(100% / 3 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -44,11 +44,11 @@
   position: relative;
 }
 .wp-block-create-block-team-member-slider-block.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 4 - 20px);
+  width: calc(100% / 4 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 4 - 20px);
+  width: calc(100% / 4 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -57,11 +57,11 @@
   position: relative;
 }
 .wp-block-create-block-team-member-slider-block.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 5 - 20px);
+  width: calc(100% / 5 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 5 - 20px);
+  width: calc(100% / 5 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -70,11 +70,11 @@
   position: relative;
 }
 .wp-block-create-block-team-member-slider-block.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] {
-  width: calc(100%/ 6 - 20px);
+  width: calc(100% / 6 - 20px);
 }
 .wp-block-create-block-team-member-slider-block.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
   align-self: stretch;
-  width: calc(100%/ 6 - 20px);
+  width: calc(100% / 6 - 20px);
   border: 1px dashed #000;
   display: flex;
   align-items: center;
@@ -120,6 +120,28 @@
   font-weight: 300;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+.wp-block-create-block-team-member-slider-block > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] .wp-block-create-block-team-member-social-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px -5px 0;
+}
+.wp-block-create-block-team-member-slider-block > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] .wp-block-create-block-team-member-social-links ul li {
+  display: inline-block;
+  margin: 5px;
+}
+.wp-block-create-block-team-member-slider-block > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] .wp-block-create-block-team-member-social-links ul li span.dashicon {
+  color: #4e4e4e;
+}
+.wp-block-create-block-team-member-slider-block > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="create-block/team-member"] .wp-block-create-block-team-member-social-links ul li.wp-block-create-block-team-member-add-icon-li button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  outline: 1px dashed;
+  height: 18px;
+  width: 20px;
 }
 
 /*# sourceMappingURL=index.css.map*/

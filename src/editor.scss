@@ -1,15 +1,14 @@
-
 .wp-block-create-block-team-member-slider-block {
 	display: block;
-	@for $i from 1 through 6{
-		&.has-#{$i}-columns{
-			>.block-editor-inner-blocks >.block-editor-block-list__layout >{
-				[data-type="create-block/team-member"]{
-					width: calc(100%/ #{$i} - 20px);
+	@for $i from 1 through 6 {
+		&.has-#{$i}-columns {
+			> .block-editor-inner-blocks > .block-editor-block-list__layout > {
+				[data-type="create-block/team-member"] {
+					width: calc(100% / #{$i} - 20px);
 				}
-				.block-list-appender{
+				.block-list-appender {
 					align-self: stretch;
-					width: calc(100%/ #{$i} - 20px);
+					width: calc(100% / #{$i} - 20px);
 					border: 1px dashed #000;
 					display: flex;
 					align-items: center;
@@ -20,23 +19,23 @@
 			}
 		}
 	}
-	> .block-editor-inner-blocks >.block-editor-block-list__layout{
+	> .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		flex-wrap: wrap;
 
-		[data-type="create-block/team-member"]{
+		[data-type="create-block/team-member"] {
 			max-width: none;
 			margin: 0;
 		}
-		> [data-type="create-block/team-member"]{
-			.wp-block-create-block-team-member-img{
+		> [data-type="create-block/team-member"] {
+			.wp-block-create-block-team-member-img {
 				position: relative;
 				margin-bottom: 20px;
 
-				&.is-loading img{
+				&.is-loading img {
 					opacity: 0.3;
 				}
-				.components-spinner{
+				.components-spinner {
 					position: absolute;
 					left: 0;
 					right: 0;
@@ -46,18 +45,44 @@
 				}
 			}
 			margin: 10px;
-			h4{
+			h4 {
 				color: #222;
 				font-size: 22px;
 				font-weight: bold;
 				margin: 0;
 			}
-			p{
-				color:#565656;
+			p {
+				color: #565656;
 				font-size: 16px;
 				font-weight: 300;
 				margin-bottom: 5px;
-				margin-top: 5px
+				margin-top: 5px;
+			}
+			.wp-block-create-block-team-member-social-links {
+				ul {
+					list-style: none;
+					padding: 0;
+					margin: 20px -5px 0;
+					li {
+						display: inline-block;
+						margin: 5px;
+						span.dashicon{
+							color:#4e4e4e;
+						}
+						&.wp-block-create-block-team-member-add-icon-li{
+							button{
+								background: none;
+								border:none;
+								padding:0;
+								cursor: pointer;
+								margin: 0;
+								outline: 1px dashed;
+								height: 18px;
+								width: 20px;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
