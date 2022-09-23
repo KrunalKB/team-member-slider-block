@@ -174,7 +174,12 @@ function Edit(_ref) {
     imgID,
     imgALT,
     imgURL,
-    socialLinks
+    socialLinks,
+    nameColor,
+    bioColor,
+    fontSizeName,
+    fontSizeBio,
+    iconColor
   } = attributes;
   const [blobURL, setBlobURL] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
   const [selectedLink, setSelectedLink] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
@@ -220,9 +225,27 @@ function Edit(_ref) {
     });
   };
 
+  const onChangeNameColor = newColor => {
+    setAttributes({
+      nameColor: newColor
+    });
+  };
+
   const onChangeBio = newBio => {
     setAttributes({
       bio: newBio
+    });
+  };
+
+  const onChangeBioColor = newColor => {
+    setAttributes({
+      bioColor: newColor
+    });
+  };
+
+  const onChangeIconColor = newColor => {
+    setAttributes({
+      iconColor: newColor
     });
   };
 
@@ -322,7 +345,17 @@ function Edit(_ref) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Settings", "team-members"),
     initialOpen: false
-  }, imgID && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+  }, !imgID && !imgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Animate, {
+    type: "loading"
+  }, _ref2 => {
+    let {
+      className
+    } = _ref2;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Notice, {
+      className: className,
+      status: "error"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Please Upload Media."));
+  }), imgID && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Size", "team-members"),
     options: getImageSizeOptions(),
     value: imgURL,
@@ -332,6 +365,74 @@ function Edit(_ref) {
     value: imgALT,
     onChange: onChangeAlt,
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("The alt attribute provides alternative information for an image if a user for some reason cannot view it", "team-members")
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Member Info Settings", "team-members"),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Appearance", "team-members"),
+    icon: "admin-appearance",
+    initialOpen: false,
+    colorSettings: [{
+      value: nameColor,
+      onChange: onChangeNameColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Member Name Color", "gutenberg-demo")
+    }, {
+      value: bioColor,
+      onChange: onChangeBioColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Member Bio Color", "gutenberg-demo")
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Name Font Size:")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FontSizePicker, {
+    fontSizes: [{
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Small"),
+      slug: "small",
+      size: 12
+    }, {
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Big"),
+      slug: "big",
+      size: 26
+    }, {
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Very Big"),
+      slug: "very-big",
+      size: 40
+    }],
+    value: fontSizeName,
+    onChange: fontSizeName => setAttributes({
+      fontSizeName: fontSizeName
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Bio Font Size:")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FontSizePicker, {
+    fontSizes: [{
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Small"),
+      slug: "small",
+      size: 12
+    }, {
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Big"),
+      slug: "big",
+      size: 26
+    }, {
+      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Very Big"),
+      slug: "very-big",
+      size: 40
+    }],
+    value: fontSizeBio,
+    onChange: fontSizeBio => setAttributes({
+      fontSizeBio: fontSizeBio
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Icon Settings", "team-members"),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Icon Color:")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
+    colors: [{
+      name: "red",
+      color: "#f00"
+    }, {
+      name: "white",
+      color: "#fff"
+    }, {
+      name: "blue",
+      color: "#00f"
+    }],
+    value: iconColor,
+    onChange: onChangeIconColor
   }))), imgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, {
     group: "inline"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaReplaceFlow, {
@@ -348,7 +449,8 @@ function Edit(_ref) {
     className: `wp-block-create-block-team-member-img${(0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__.isBlobURL)(imgURL) ? " is-loading" : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imgURL,
-    alt: imgALT
+    alt: imgALT,
+    height: "500"
   }), (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__.isBlobURL)(imgURL) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Spinner, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaPlaceholder, {
     icon: "format-image",
     onSelect: onSelectImage,
@@ -362,13 +464,21 @@ function Edit(_ref) {
     tagName: "h4",
     value: name,
     onChange: onChangeName,
-    allowedFormats: []
+    allowedFormats: [],
+    style: {
+      color: nameColor,
+      fontSize: fontSizeName
+    }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Member Bio", "team-members"),
     tagName: "p",
     value: bio,
     onChange: onChangeBio,
-    allowedFormats: []
+    allowedFormats: [],
+    style: {
+      color: bioColor,
+      fontSize: fontSizeBio
+    }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-create-block-team-member-social-links"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, socialLinks.map((item, index) => {
@@ -379,7 +489,10 @@ function Edit(_ref) {
       "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Edit Social Link", "team-members"),
       onClick: () => setSelectedLink(index)
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Icon, {
-      icon: item.icon
+      icon: item.icon,
+      style: {
+        color: iconColor
+      }
     })));
   }), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     className: "wp-block-create-block-team-member-add-icon-li"
@@ -389,7 +502,10 @@ function Edit(_ref) {
     "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add Social Link", "team-members"),
     onClick: addNewSocialItem
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Icon, {
-    icon: "plus"
+    icon: "plus",
+    style: {
+      color: "#000"
+    }
   })))))), selectedLink !== undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-create-block-team-member-link-form"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
@@ -445,6 +561,22 @@ __webpack_require__.r(__webpack_exports__);
       source: "html",
       selector: "p"
     },
+    nameColor: {
+      type: "string",
+      default: "#000"
+    },
+    bioColor: {
+      type: "string",
+      default: "#000"
+    },
+    fontSizeName: {
+      type: "number",
+      default: "22"
+    },
+    fontSizeBio: {
+      type: "number",
+      default: "22"
+    },
     imgID: {
       type: "number"
     },
@@ -484,6 +616,10 @@ __webpack_require__.r(__webpack_exports__);
           selector: "a"
         }
       }
+    },
+    iconColor: {
+      type: "string",
+      default: "#4e4e4e"
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -521,7 +657,12 @@ function save(_ref) {
     imgURL,
     imgALT,
     imgID,
-    socialLinks
+    socialLinks,
+    nameColor,
+    bioColor,
+    fontSizeName,
+    fontSizeBio,
+    iconColor
   } = attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), imgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imgURL,
@@ -529,10 +670,18 @@ function save(_ref) {
     className: imgID ? `wp-image-${imgID}` : null
   }), name && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h4",
-    value: name
+    value: name,
+    style: {
+      color: nameColor,
+      fontSize: fontSizeName
+    }
   }), bio && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
-    value: bio
+    value: bio,
+    style: {
+      color: bioColor,
+      fontSize: fontSizeBio
+    }
   }), socialLinks.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-create-block-team-member-social-links"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, socialLinks.map((item, index) => {
@@ -542,7 +691,10 @@ function save(_ref) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: item.link
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-      icon: item.icon
+      icon: item.icon,
+      style: {
+        color: iconColor
+      }
     })));
   }))));
 }

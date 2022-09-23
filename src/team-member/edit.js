@@ -7,6 +7,7 @@ import {
 	MediaReplaceFlow,
 	InspectorControls,
 	store as blockEditorStore,
+	PanelColorSettings,
 } from "@wordpress/block-editor";
 import { isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import {
@@ -20,13 +21,29 @@ import {
 	Tooltip,
 	Button,
 	TextControl,
+	Animate,
+	Notice,
+	FontSizePicker,
+	ColorPalette,
 } from "@wordpress/components";
 import { useEffect, useState, useRef } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { usePrevious } from "@wordpress/compose";
 
 export default function Edit({ attributes, setAttributes, isSelected }) {
-	const { name, bio, imgID, imgALT, imgURL, socialLinks } = attributes;
+	const {
+		name,
+		bio,
+		imgID,
+		imgALT,
+		imgURL,
+		socialLinks,
+		nameColor,
+		bioColor,
+		fontSizeName,
+		fontSizeBio,
+		iconColor,
+	} = attributes;
 
 	const [blobURL, setBlobURL] = useState();
 
@@ -69,8 +86,20 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 		setAttributes({ name: newName });
 	};
 
+	const onChangeNameColor = (newColor) => {
+		setAttributes({ nameColor: newColor });
+	};
+
 	const onChangeBio = (newBio) => {
 		setAttributes({ bio: newBio });
+	};
+
+	const onChangeBioColor = (newColor) => {
+		setAttributes({ bioColor: newColor });
+	};
+
+	const onChangeIconColor = (newColor) => {
+		setAttributes({ iconColor: newColor });
 	};
 
 	const onChangeAlt = (newAlt) => {
@@ -167,6 +196,15 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 					title={__("Image Settings", "team-members")}
 					initialOpen={false}
 				>
+					{!imgID && !imgURL && (
+						<Animate type="loading">
+							{({ className }) => (
+								<Notice className={className} status="error">
+									<p>Please Upload Media.</p>
+								</Notice>
+							)}
+						</Animate>
+					)}
 					{imgID && (
 						<SelectControl
 							label={__("Image Size", "team-members")}
@@ -186,6 +224,99 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 							)}
 						/>
 					)}
+				</PanelBody>
+				<PanelBody
+					title={__("Member Info Settings", "team-members")}
+					initialOpen={false}
+				>
+					<PanelColorSettings
+						title={__("Appearance", "team-members")}
+						icon="admin-appearance"
+						initialOpen={false}
+						colorSettings={[
+							{
+								value: nameColor,
+								onChange: onChangeNameColor,
+								label: __("Member Name Color", "gutenberg-demo"),
+							},
+							{
+								value: bioColor,
+								onChange: onChangeBioColor,
+								label: __("Member Bio Color", "gutenberg-demo"),
+							},
+						]}
+					></PanelColorSettings>
+					<hr />
+					<p>
+						<strong>Name Font Size:</strong>
+					</p>
+					<FontSizePicker
+						fontSizes={[
+							{
+								name: __("Small"),
+								slug: "small",
+								size: 12,
+							},
+							{
+								name: __("Big"),
+								slug: "big",
+								size: 26,
+							},
+							{
+								name: __("Very Big"),
+								slug: "very-big",
+								size: 40,
+							},
+						]}
+						value={fontSizeName}
+						onChange={(fontSizeName) =>
+							setAttributes({ fontSizeName: fontSizeName })
+						}
+					/>
+					<hr />
+					<p>
+						<strong>Bio Font Size:</strong>
+					</p>
+					<FontSizePicker
+						fontSizes={[
+							{
+								name: __("Small"),
+								slug: "small",
+								size: 12,
+							},
+							{
+								name: __("Big"),
+								slug: "big",
+								size: 26,
+							},
+							{
+								name: __("Very Big"),
+								slug: "very-big",
+								size: 40,
+							},
+						]}
+						value={fontSizeBio}
+						onChange={(fontSizeBio) =>
+							setAttributes({ fontSizeBio: fontSizeBio })
+						}
+					/>
+				</PanelBody>
+				<PanelBody
+					title={__("Icon Settings", "team-members")}
+					initialOpen={false}
+				>
+					<p>
+						<strong>Icon Color:</strong>
+					</p>
+					<ColorPalette
+						colors={[
+							{ name: "red", color: "#f00" },
+							{ name: "white", color: "#fff" },
+							{ name: "blue", color: "#00f" },
+						]}
+						value={iconColor}
+						onChange={onChangeIconColor}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			{imgURL && (
@@ -211,7 +342,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 							isBlobURL(imgURL) ? " is-loading" : ""
 						}`}
 					>
-						<img src={imgURL} alt={imgALT} />
+						<img src={imgURL} alt={imgALT} height={"500"} />
 						{isBlobURL(imgURL) && <Spinner />}
 					</div>
 				)}
@@ -230,6 +361,10 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 					value={name}
 					onChange={onChangeName}
 					allowedFormats={[]}
+					style={{
+						color: nameColor,
+						fontSize: fontSizeName,
+					}}
 				/>
 				<RichText
 					placeholder={__("Member Bio", "team-members")}
@@ -237,6 +372,10 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 					value={bio}
 					onChange={onChangeBio}
 					allowedFormats={[]}
+					style={{
+						color: bioColor,
+						fontSize: fontSizeBio,
+					}}
 				/>
 				<div className="wp-block-create-block-team-member-social-links">
 					<ul>
@@ -250,7 +389,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 										aria-label={__("Edit Social Link", "team-members")}
 										onClick={() => setSelectedLink(index)}
 									>
-										<Icon icon={item.icon} />
+										<Icon icon={item.icon} style={{ color: iconColor }} />
 									</button>
 								</li>
 							);
@@ -262,7 +401,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 										aria-label={__("Add Social Link", "team-members")}
 										onClick={addNewSocialItem}
 									>
-										<Icon icon="plus" />
+										<Icon icon="plus" style={{ color: "#000" }} />
 									</button>
 								</Tooltip>
 							</li>

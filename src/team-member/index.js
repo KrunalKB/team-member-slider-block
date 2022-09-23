@@ -23,6 +23,22 @@ registerBlockType("create-block/team-member", {
 			source: "html",
 			selector: "p",
 		},
+		nameColor: {
+			type: "string",
+			default: "#000",
+		},
+		bioColor: {
+			type: "string",
+			default: "#000",
+		},
+		fontSizeName: {
+			type: "number",
+			default: "22",
+		},
+		fontSizeBio: {
+			type: "number",
+			default: "22",
+		},
 		imgID: {
 			type: "number",
 		},
@@ -60,6 +76,10 @@ registerBlockType("create-block/team-member", {
 				},
 			},
 		},
+		iconColor:{
+			type:"string",
+			default:"#4e4e4e"
+		}
 	},
 	edit: Edit,
 	save,
