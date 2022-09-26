@@ -24,3 +24,34 @@ function create_block_team_member_slider_block_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'create_block_team_member_slider_block_block_init' );
+
+
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+
+		wp_enqueue_script( 'tmsb-slickerjs', plugins_url( 'assets/js/slick.js', __FILE__ ), array(), null, true );
+
+		wp_enqueue_script( 'tmsb-slickerminjs', plugins_url( 'assets/js/slick.min.js', __FILE__ ), array(), null, true );
+
+		wp_enqueue_style( 'tmsb-slickercss', plugins_url( 'assets/css/slick.css', __FILE__ ), array(), false, 'all' );
+
+		wp_enqueue_style( 'tmsb-slickerthemecss', plugins_url( 'assets/css/slick-theme.css', __FILE__ ), array(), false, 'all' );
+
+		// wp_enqueue_script( 'sliderjs', plugins_url( 'assets/js/slickerslider.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+	}
+);
+add_action(
+	'admin_enqueue_scripts',
+	function () {
+
+		wp_enqueue_style( 'tmsb-slickercss', plugins_url( 'assets/css/slick.css', __FILE__ ), array(), false, 'all' );
+
+		wp_enqueue_style( 'tmsb-slickerthemecss', plugins_url( 'assets/css/slick-theme.css', __FILE__ ), array(), false, 'all' );
+
+		wp_enqueue_script( 'tmsb-slickerjs', plugins_url( 'assets/js/slick.js', __FILE__ ), array(), null, true );
+
+		wp_enqueue_script( 'tmsb-slickerminjs', plugins_url( 'assets/js/slick.min.js', __FILE__ ), array(), null, true );
+
+	}
+);

@@ -194,6 +194,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 			<InspectorControls>
 				<PanelBody
 					title={__("Image Settings", "team-members")}
+					// icon={image}
 					initialOpen={false}
 				>
 					{!imgID && !imgURL && (

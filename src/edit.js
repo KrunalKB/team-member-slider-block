@@ -4,41 +4,73 @@ import {
 	InnerBlocks,
 	InspectorControls,
 } from "@wordpress/block-editor";
-import { PanelBody, RangeControl } from "@wordpress/components";
+import { PanelBody, RangeControl, RadioControl } from "@wordpress/components";
 import "./editor.scss";
+import Slider from "react-slick";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { columns } = attributes;
+	const { columns, blockStyle } = attributes;
+
 	const onChangeColumns = (newColumns) => {
 		setAttributes({ columns: newColumns });
 	};
+
+	const onChangeBlockStyle = (newStyle) => {
+		setAttributes({ blockStyle: newStyle });
+	};
+
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+	};
+
 	return (
-		<div
-			{...useBlockProps({
-				className: `has-${columns}-columns`,
-			})}
-		>
+		<>
 			<InspectorControls>
-				<PanelBody>
-					<RangeControl
-						label={__("Columns", "team-members")}
-						min={1}
-						max={6}
-						onChange={onChangeColumns}
-						value={columns}
+				<PanelBody
+					title={__("Block Settings", "team-members")}
+					initialOpen={true}
+				>
+					<RadioControl
+						label="Block Style"
+						help="The style you want to apply. This style reflects directly on your front end."
+						selected={blockStyle}
+						options={[
+							{ label: "Columns", value: "c" },
+							{ label: "Slider", value: "s" },
+						]}
+						onChange={onChangeBlockStyle}
 					/>
+					{blockStyle == "c" && (
+						<RangeControl
+							label={__("Columns", "team-members")}
+							min={1}
+							max={6}
+							onChange={onChangeColumns}
+							value={columns}
+						/>
+					)}
 				</PanelBody>
 			</InspectorControls>
-			<InnerBlocks
-				allowedBlocks={["create-block/team-member"]}
-				orientation="horizontal"
-				template={[
-					["create-block/team-member"],
-					["create-block/team-member"],
-					["create-block/team-member"],
-				]}
-				// templateLock ="insert"
-			/>
-		</div>
+			<div
+				{...useBlockProps({
+					className: `has-${columns}-columns`,
+				})}
+			>
+				<InnerBlocks
+					allowedBlocks={["create-block/team-member"]}
+					orientation="horizontal"
+					template={[
+						["create-block/team-member"],
+						["create-block/team-member"],
+						["create-block/team-member"],
+					]}
+					// templateLock ="insert"
+				/>
+			</div>
+		</>
 	);
 }

@@ -17,6 +17,10 @@ registerBlockType( metadata.name, {
 		columns:{
 			type : "number",
 			default: 2
+		},
+		blockStyle:{
+			type:"string",
+			default:"c"
 		}
 	},
 
