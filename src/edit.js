@@ -55,9 +55,10 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 				</PanelBody>
 			</InspectorControls>
+
 			<div
 				{...useBlockProps({
-					className: `has-${columns}-columns`,
+					className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`,
 				})}
 			>
 				<InnerBlocks

@@ -38,7 +38,7 @@ add_action(
 
 		wp_enqueue_style( 'tmsb-slickerthemecss', plugins_url( 'assets/css/slick-theme.css', __FILE__ ), array(), false, 'all' );
 
-		// wp_enqueue_script( 'sliderjs', plugins_url( 'assets/js/slickerslider.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'tmsb-sliderjs', plugins_url( 'assets/js/slickerslider.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
 	}
 );
 add_action(

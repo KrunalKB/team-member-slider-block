@@ -15,15 +15,9 @@ export default function save({ attributes }) {
 	return (
 		<div
 			{...useBlockProps.save({
-				className: blockStyle == "c" ? `has-${columns}-columns` : "",
+				className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`,
 			})}
 		>
-			{/* {blockStyle == "s" && (
-				<Slider {...settings}>
-					<InnerBlocks.Content />
-				</Slider>
-			)}
-			{blockStyle == "c" && <InnerBlocks.Content />} */}
 			<InnerBlocks.Content />
 		</div>
 	);

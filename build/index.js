@@ -79,7 +79,7 @@ function Edit(_ref) {
     onChange: onChangeColumns,
     value: columns
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-    className: `has-${columns}-columns`
+    className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
     allowedBlocks: ["create-block/team-member"],
     orientation: "horizontal",
@@ -171,7 +171,7 @@ function save(_ref) {
     slidesToScroll: 1
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    className: blockStyle == "c" ? `has-${columns}-columns` : ""
+    className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
 }
 
