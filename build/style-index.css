@@ -55,4 +55,9 @@
   text-decoration: none;
 }
 
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

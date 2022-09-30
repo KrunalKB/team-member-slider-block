@@ -12,7 +12,6 @@ import {
 import { isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import {
 	Spinner,
-	withNotices,
 	ToolbarButton,
 	PanelBody,
 	TextareaControl,

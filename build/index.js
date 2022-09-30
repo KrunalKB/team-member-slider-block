@@ -35,7 +35,15 @@ function Edit(_ref) {
   } = _ref;
   const {
     columns,
-    blockStyle
+    blockStyle,
+    loop,
+    autoplay,
+    slidesToShow,
+    slidesToScroll,
+    dots,
+    fade,
+    arrow,
+    speed
   } = attributes;
 
   const onChangeColumns = newColumns => {
@@ -47,6 +55,54 @@ function Edit(_ref) {
   const onChangeBlockStyle = newStyle => {
     setAttributes({
       blockStyle: newStyle
+    });
+  };
+
+  const onChangeLoop = state => {
+    setAttributes({
+      loop: state
+    });
+  };
+
+  const onChangeDots = state => {
+    setAttributes({
+      dots: state
+    });
+  };
+
+  const onChangeArrow = state => {
+    setAttributes({
+      arrow: state
+    });
+  };
+
+  const onChangeFade = state => {
+    setAttributes({
+      fade: state
+    });
+  };
+
+  const onChangeSpeed = newSpeed => {
+    setAttributes({
+      speed: newSpeed
+    });
+  };
+
+  const onChangeAutoplay = state => {
+    setAttributes({
+      autoplay: state
+    });
+  };
+
+  const onChangeSlides = slides => {
+    setAttributes({
+      slidesToShow: slides
+    });
+  };
+
+  const onChangeScroll = scroll => {
+    setAttributes({
+      slidesToScroll: scroll
     });
   };
 
@@ -62,7 +118,6 @@ function Edit(_ref) {
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
     label: "Block Style",
-    help: "The style you want to apply. This style reflects directly on your front end.",
     selected: blockStyle,
     options: [{
       label: "Columns",
@@ -72,13 +127,62 @@ function Edit(_ref) {
       value: "s"
     }],
     onChange: onChangeBlockStyle
-  }), blockStyle == "c" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+  }), blockStyle == "c" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Column Settings", "team-members"),
+    initialOpen: open
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Columns", "team-members"),
     min: 1,
     max: 6,
     onChange: onChangeColumns,
     value: columns
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+  })), blockStyle == "s" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Slider Settings", "team-members"),
+    initialOpen: open
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Loop sliding ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Infinite Loop", "team-members"),
+    checked: loop,
+    onChange: onChangeLoop
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Autoplay ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Autoplay", "team-members"),
+    checked: autoplay,
+    onChange: onChangeAutoplay
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Show dot indicators ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Dots", "team-members"),
+    checked: dots,
+    onChange: onChangeDots
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Fade animation ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Fade", "team-members"),
+    checked: fade,
+    onChange: onChangeFade
+  }), fade == false && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Slides to Show", "team-members"),
+    min: 1,
+    max: 3,
+    onChange: onChangeSlides,
+    value: slidesToShow
+  }), fade == false && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Slides to Scroll", "team-members"),
+    min: 1,
+    max: 3,
+    onChange: onChangeScroll,
+    value: slidesToScroll
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Prev/Next Arrows ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: "Arrow",
+    checked: arrow,
+    onChange: onChangeArrow
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, " Slide/Fade animation speed ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Speed", "team-members"),
+    options: [{
+      value: "300",
+      label: "300"
+    }, {
+      value: "500",
+      label: "500"
+    }],
+    value: speed,
+    onChange: onChangeSpeed
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
     allowedBlocks: ["create-block/team-member"],
@@ -128,6 +232,38 @@ __webpack_require__.r(__webpack_exports__);
     blockStyle: {
       type: "string",
       default: "c"
+    },
+    loop: {
+      type: "boolean",
+      default: true
+    },
+    autoplay: {
+      type: "boolean",
+      default: true
+    },
+    slidesToShow: {
+      type: "number",
+      default: 1
+    },
+    slidesToScroll: {
+      type: "number",
+      default: 1
+    },
+    dots: {
+      type: "boolean",
+      default: true
+    },
+    fade: {
+      type: "boolean",
+      default: false
+    },
+    arrow: {
+      type: "boolean",
+      default: true
+    },
+    speed: {
+      type: "string",
+      default: "300"
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -151,8 +287,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
-
 
 
 function save(_ref) {
@@ -161,18 +295,53 @@ function save(_ref) {
   } = _ref;
   const {
     columns,
-    blockStyle
+    blockStyle,
+    loop,
+    autoplay,
+    slidesToShow,
+    slidesToScroll,
+    dots,
+    fade,
+    arrow,
+    speed
   } = attributes;
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tmsb-slider-settings"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: loop === true ? "1" : "0",
+    className: "tmsb-loop"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: autoplay === true ? "1" : "0",
+    className: "tmsb-autoplay"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: slidesToShow,
+    className: "tmsb-slides"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: slidesToScroll,
+    className: "tmsb-scroll"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: dots === true ? "1" : "0",
+    className: "tmsb-dots"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: fade === true ? "1" : "0",
+    className: "tmsb-fade"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: arrow === true ? "1" : "0",
+    className: "tmsb-arrow"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "hidden",
+    value: speed,
+    className: "tmsb-speed"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)));
 }
 
 /***/ }),

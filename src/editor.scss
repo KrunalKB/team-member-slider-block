@@ -19,6 +19,23 @@
 			}
 		}
 	}
+	&.has-slider {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout > {
+			[data-type="create-block/team-member"] {
+				width: calc(100% / 2 - 20px);
+			}
+			.block-list-appender {
+				align-self: stretch;
+				width: calc(100% / 2 - 20px);
+				border: 1px dashed #000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 70px;
+				position: relative;
+			}
+		}
+	}
 	> .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		flex-wrap: wrap;

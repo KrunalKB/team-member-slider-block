@@ -35,7 +35,7 @@
 				li {
 					display: inline-block;
 					margin: 5px;
-					a{
+					a {
 						text-decoration: none;
 					}
 					// span.dashicon {
@@ -45,4 +45,8 @@
 			}
 		}
 	}
+}
+.slick-prev:before,
+.slick-next:before {
+	color: black !important;
 }

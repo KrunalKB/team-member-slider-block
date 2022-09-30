@@ -76,10 +76,10 @@ registerBlockType("create-block/team-member", {
 				},
 			},
 		},
-		iconColor:{
-			type:"string",
-			default:"#4e4e4e"
-		}
+		iconColor: {
+			type: "string",
+			default: "#4e4e4e",
+		},
 	},
 	edit: Edit,
 	save,
