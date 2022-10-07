@@ -54,9 +54,8 @@
 .wp-block-create-block-team-member-slider-block .wp-block-create-block-team-member .wp-block-create-block-team-member-social-links ul li a {
   text-decoration: none;
 }
-
-.slick-prev:before,
-.slick-next:before {
+.wp-block-create-block-team-member-slider-block .slick-prev:before,
+.wp-block-create-block-team-member-slider-block .slick-next:before {
   color: black !important;
 }
 

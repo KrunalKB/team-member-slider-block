@@ -1,22 +1,27 @@
 (function ($) {
-	var loop     = $(".tmsb-loop").val();
-	var autoplay = $(".tmsb-autoplay").val();
-	var slides   = $(".tmsb-slides").val();
-	var dots     = $(".tmsb-dots").val();
-	var scroll   = $(".tmsb-scroll").val();
-	var fade     = $(".tmsb-fade").val();
-	var arrow    = $(".tmsb-arrow").val();
-	var speed    = $(".tmsb-speed").val();
+	let loop = $(".tmsb-loop").val();
+	let autoplay = $(".tmsb-autoplay").val();
+	let slides = $(".tmsb-slides").val();
+	let dots = $(".tmsb-dots").val();
+	let scroll = $(".tmsb-scroll").val();
+	let fade = $(".tmsb-fade").val();
+	let arrow = $(".tmsb-arrow").val();
+	let speed = $(".tmsb-speed").val();
+
+	if (fade == 1) {
+		slides = 1;
+	}
 
 	$(".has-slider").slick({
-		infinite      : loop == 1 ? true    : false,
-		autoplay      : autoplay == 1 ? true: false,
-		slidesToShow  : slides,
+		infinite: loop == 1 ? true : false,
+		autoplay: autoplay == 1 ? true : false,
+		slidesToShow: slides,
 		slidesToScroll: 1,
-		dots          : dots == 1 ? true    : false,
-		arrows        : arrow == 1 ? true   : false,
-		speed         : speed,
-		focusOnSelect : true,
-		// fade: fade == 1 ? true : false,
+		dots: dots == 1 ? true : false,
+		arrows: arrow == 1 ? true : false,
+		speed: speed,
+		focusOnSelect: true,
+		fade: fade == 1 ? true : false,
 	});
+
 })(jQuery);

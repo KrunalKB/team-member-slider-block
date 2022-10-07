@@ -28,8 +28,6 @@ export default function save({ attributes }) {
 						value={autoplay === true ? "1" : "0"}
 						className="tmsb-autoplay"
 					/>
-					<input type="hidden" value={slidesToShow} className="tmsb-slides" />
-					<input type="hidden" value={slidesToScroll} className="tmsb-scroll" />
 					<input
 						type="hidden"
 						value={dots === true ? "1" : "0"}
@@ -45,6 +43,8 @@ export default function save({ attributes }) {
 						value={arrow === true ? "1" : "0"}
 						className="tmsb-arrow"
 					/>
+					<input type="hidden" value={slidesToShow} className="tmsb-slides" />
+					<input type="hidden" value={slidesToScroll} className="tmsb-scroll" />
 					<input type="hidden" value={speed} className="tmsb-speed" />
 				</form>
 			</div>

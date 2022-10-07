@@ -3,7 +3,6 @@ import {
 	useBlockProps,
 	InnerBlocks,
 	InspectorControls,
-	PanelRow,
 } from "@wordpress/block-editor";
 import {
 	PanelBody,
@@ -11,6 +10,7 @@ import {
 	RadioControl,
 	ToggleControl,
 	SelectControl,
+	PanelRow,
 } from "@wordpress/components";
 import "./editor.scss";
 import Slider from "react-slick";
@@ -43,6 +43,10 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const onChangeDots = (state) => {
 		setAttributes({ dots: state });
+	};
+
+	const onChangeIconColor = (color) => {
+		setAttributes({ slideIconColor: color });
 	};
 
 	const onChangeArrow = (state) => {
@@ -112,81 +116,120 @@ export default function Edit({ attributes, setAttributes }) {
 							title={__("Slider Settings", "team-members")}
 							initialOpen={open}
 						>
-							<p>
-								<strong> Loop sliding </strong>
-							</p>
-							<ToggleControl
-								label={__("Infinite Loop", "team-members")}
-								checked={loop}
-								onChange={onChangeLoop}
-							/>
-							<hr />
-							<p>
-								<strong> Autoplay </strong>
-							</p>
-							<ToggleControl
-								label={__("Autoplay", "team-members")}
-								checked={autoplay}
-								onChange={onChangeAutoplay}
-							/>
-							<hr />
-							<p>
-								<strong> Show dot indicators </strong>
-							</p>
-							<ToggleControl
-								label={__("Dots", "team-members")}
-								checked={dots}
-								onChange={onChangeDots}
-							/>
-							<hr />
-							<p>
-								<strong> Fade animation </strong>
-							</p>
-							<ToggleControl
-								label={__("Fade", "team-members")}
-								checked={fade}
-								onChange={onChangeFade}
-							/>
+							<PanelBody
+								title={__("Loop sliding", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<ToggleControl
+										label={__("Infinite Loop", "team-members")}
+										checked={loop}
+										onChange={onChangeLoop}
+									/>
+								</PanelRow>
+							</PanelBody>
+
+							<PanelBody
+								title={__("Autoplay", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<ToggleControl
+										label={__("Autoplay", "team-members")}
+										checked={autoplay}
+										onChange={onChangeAutoplay}
+									/>
+								</PanelRow>
+							</PanelBody>
+
+							<PanelBody
+								title={__("Show dot indicators", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<ToggleControl
+										label={__("Dots", "team-members")}
+										checked={dots}
+										onChange={onChangeDots}
+									/>
+								</PanelRow>
+							</PanelBody>
+
+							<PanelBody
+								title={__("Fade animation", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<ToggleControl
+										label={__("Fade", "team-members")}
+										checked={fade}
+										onChange={onChangeFade}
+									/>
+								</PanelRow>
+							</PanelBody>
 							{fade == false && (
-								<RangeControl
-									label={__("Slides to Show", "team-members")}
-									min={1}
-									max={3}
-									onChange={onChangeSlides}
-									value={slidesToShow}
-								/>
+								<PanelBody
+									title={__("Slides to Show", "team-members")}
+									initialOpen={false}
+								>
+									<PanelRow>
+										<RangeControl
+											label={__("Slides to Show", "team-members")}
+											min={1}
+											max={3}
+											onChange={onChangeSlides}
+											value={slidesToShow}
+										/>
+									</PanelRow>
+								</PanelBody>
 							)}
 							{fade == false && (
-								<RangeControl
-									label={__("Slides to Scroll", "team-members")}
-									min={1}
-									max={3}
-									onChange={onChangeScroll}
-									value={slidesToScroll}
-								/>
+								<PanelBody
+									title={__("Slides to Scroll", "team-members")}
+									initialOpen={false}
+								>
+									<PanelRow>
+										<RangeControl
+											label={__("Slides to Scroll", "team-members")}
+											min={1}
+											max={3}
+											onChange={onChangeScroll}
+											value={slidesToScroll}
+										/>
+									</PanelRow>
+								</PanelBody>
 							)}
-							<hr />
-							<p>
-								<strong> Prev/Next Arrows </strong>
-							</p>
-							<ToggleControl
-								label="Arrow"
-								checked={arrow}
-								onChange={onChangeArrow}
-							/>
-							<hr />
-							<p>
-								<strong> Slide/Fade animation speed </strong>
-							</p>
-							<SelectControl
-								label={__("Speed", "team-members")}
-								options={[
-									{ value: "300", label: "300" },
-									{ value: "500", label: "500" },
-								]}
-								value={speed}
-								onChange={onChangeSpeed}
-							/>
+
+							<PanelBody
+								title={__("Prev/Next Arrows", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<ToggleControl
+										label="Arrow"
+										checked={arrow}
+										onChange={onChangeArrow}
+									/>
+								</PanelRow>
+							</PanelBody>
+
+							<PanelBody
+								title={__("Slide/Fade animation speed", "team-members")}
+								initialOpen={false}
+							>
+								<PanelRow>
+									<SelectControl
+										label={__("Speed", "team-members")}
+										options={[
+											{ value: "300", label: "300" },
+											{ value: "500", label: "500" },
+										]}
+										value={speed}
+										onChange={onChangeSpeed}
+									/>
+								</PanelRow>
+							</PanelBody>
+
 						</PanelBody>
 					)}
 				</PanelBody>
@@ -195,7 +238,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div
 				{...useBlockProps({
 					className:
-						blockStyle == "c" ? `has-${columns}-columns` : `has-slider`,
+						blockStyle == "c" ? `has-${columns}-columns` : `has-slider has-icon-color-${slideIconColor}`,
 				})}
 			>
 				<InnerBlocks
