@@ -25,7 +25,6 @@ function create_block_team_member_slider_block_block_init() {
 }
 add_action( 'init', 'create_block_team_member_slider_block_block_init' );
 
-
 add_action(
 	'wp_enqueue_scripts',
 	function () {

@@ -213,7 +213,7 @@ function Edit(_ref) {
     value: speed,
     onChange: onChangeSpeed
   })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-    className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider has-icon-color-${slideIconColor}`
+    className: blockStyle == "c" ? `has-${columns}-columns` : `has-slider`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
     allowedBlocks: ["create-block/team-member"],
     orientation: "horizontal",

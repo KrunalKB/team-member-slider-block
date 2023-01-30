@@ -238,7 +238,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div
 				{...useBlockProps({
 					className:
-						blockStyle == "c" ? `has-${columns}-columns` : `has-slider has-icon-color-${slideIconColor}`,
+						blockStyle == "c" ? `has-${columns}-columns` : `has-slider`,
 				})}
 			>
 				<InnerBlocks
