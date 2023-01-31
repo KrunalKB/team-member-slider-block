@@ -3,8 +3,8 @@
  * Team Member Slider Block
  *
  * @package           Team Member Slider Block
- * @author            Harit Panchal
- * @copyright         2022 Harit Panchal
+ * @author            Krunal Bhimajiyani
+ * @copyright         2022 Krunal Bhimajiyani
  * @license           GPL-2.0
  *
  * @wordpress-plugin
@@ -20,10 +20,13 @@
  * Text Domain:       team-members
  */
 
-function create_block_team_member_slider_block_block_init() {
+/**
+ * Registering Block.
+ */
+function tmsb_create_block_team_member_slider_block_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
-add_action( 'init', 'create_block_team_member_slider_block_block_init' );
+add_action( 'init', 'tmsb_create_block_team_member_slider_block_block_init' );
 
 add_action(
 	'wp_enqueue_scripts',
