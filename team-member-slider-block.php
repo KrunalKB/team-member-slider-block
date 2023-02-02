@@ -1,16 +1,8 @@
 <?php
 /**
- * Team Member Slider Block
- *
- * @package           Team Member Slider Block
- * @author            Krunal Bhimajiyani
- * @copyright         2022 Krunal Bhimajiyani
- * @license           GPL-2.0
- *
- * @wordpress-plugin
  * Plugin Name:       Team Member Slider Block
  * Description:       A team member's gutenberg block with column and slider layout.
- * Requires at least: 6.1
+ * Requires at least: 5.9.3
  * Requires PHP:      7.4
  * Version:           1.0.0
  * Author:            Krunal Bhimajiyani
@@ -18,6 +10,8 @@
  * License:           GPL v2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       team-members
+ *
+ * @package           Team Member Slider Block
  */
 
 /**
