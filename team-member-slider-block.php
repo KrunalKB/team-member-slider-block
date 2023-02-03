@@ -22,6 +22,9 @@ function tmsb_create_block_team_member_slider_block_block_init() {
 }
 add_action( 'init', 'tmsb_create_block_team_member_slider_block_block_init' );
 
+/**
+ * Enqueue files for frontend.
+ */
 add_action(
 	'wp_enqueue_scripts',
 	function () {
@@ -35,8 +38,14 @@ add_action(
 		wp_enqueue_style( 'tmsb-slickerthemecss', plugins_url( 'assets/css/slick-theme.css', __FILE__ ), array(), '1.0.0', 'all' );
 
 		wp_enqueue_script( 'tmsb-sliderjs', plugins_url( 'assets/js/slickerslider.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+
+		wp_enqueue_style( 'dashicons' );
 	}
 );
+
+/**
+ * Enqueue files for backend.
+ */
 add_action(
 	'admin_enqueue_scripts',
 	function () {
